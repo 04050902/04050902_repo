@@ -1,0 +1,102 @@
+[
+    {
+        "id": "b066d749.74fc18",
+        "type": "tab",
+        "label": "Flow 2"
+    },
+    {
+        "id": "823caa5b.5c0e98",
+        "type": "inject",
+        "z": "b066d749.74fc18",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "f682bfb6.df37"
+            ]
+        ]
+    },
+    {
+        "id": "f682bfb6.df37",
+        "type": "function",
+        "z": "b066d749.74fc18",
+        "name": "payload",
+        "func": "msg.headers={\n    deviceKey: \"ehUcK0GX0b2ScAfc\"\n    };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 419,
+        "y": 138,
+        "wires": [
+            [
+                "b842f97d.69b4a8",
+                "e513b16b.ef1dd"
+            ]
+        ]
+    },
+    {
+        "id": "b842f97d.69b4a8",
+        "type": "http request",
+        "z": "b066d749.74fc18",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DCW6aFj5/datachannels/Humidity/datapoints.csv",
+        "tls": "",
+        "x": 627,
+        "y": 141,
+        "wires": [
+            [
+                "40635703.ed4bd8",
+                "e4f6ab42.d8a268"
+            ]
+        ]
+    },
+    {
+        "id": "40635703.ed4bd8",
+        "type": "http response",
+        "z": "b066d749.74fc18",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 950,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "e4f6ab42.d8a268",
+        "type": "debug",
+        "z": "b066d749.74fc18",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 977,
+        "y": 237,
+        "wires": []
+    },
+    {
+        "id": "e513b16b.ef1dd",
+        "type": "http request",
+        "z": "b066d749.74fc18",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "url": "http://api.mediatek.com/mcs/v2/devices/DCW6aFj5/datachannels/Temperature/datapoints.csv",
+        "tls": "",
+        "x": 627,
+        "y": 341,
+        "wires": [
+            [
+                "40635703.ed4bd8",
+                "e4f6ab42.d8a268"
+            ]
+        ]
+    }
+]

@@ -1,0 +1,136 @@
+[
+    {
+        "id": "7adfc530.5bf0ec",
+        "type": "tab",
+        "label": "Flow 1"
+    },
+    {
+        "id": "35bcdec6.046442",
+        "type": "rpi-gpio out",
+        "z": "7adfc530.5bf0ec",
+        "name": "led",
+        "pin": "7",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 790,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2f232821.0f4308",
+        "type": "debug",
+        "z": "7adfc530.5bf0ec",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 790,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "b6e8030c.1e905",
+        "type": "rpi-gpio in",
+        "z": "7adfc530.5bf0ec",
+        "name": "switch",
+        "pin": "11",
+        "intype": "up",
+        "debounce": "25",
+        "read": true,
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "4957a53c.d2558c"
+            ]
+        ]
+    },
+    {
+        "id": "4957a53c.d2558c",
+        "type": "switch",
+        "z": "7adfc530.5bf0ec",
+        "name": "chooce",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "outputs": 2,
+        "x": 355,
+        "y": 510,
+        "wires": [
+            [
+                "7aba2ede.a1675"
+            ],
+            [
+                "3a8e6982.8166f6"
+            ]
+        ]
+    },
+    {
+        "id": "7aba2ede.a1675",
+        "type": "change",
+        "z": "7adfc530.5bf0ec",
+        "name": "change to 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 480,
+        "wires": [
+            [
+                "35bcdec6.046442",
+                "2f232821.0f4308"
+            ]
+        ]
+    },
+    {
+        "id": "3a8e6982.8166f6",
+        "type": "change",
+        "z": "7adfc530.5bf0ec",
+        "name": "change to 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 550,
+        "y": 540,
+        "wires": [
+            [
+                "35bcdec6.046442",
+                "2f232821.0f4308"
+            ]
+        ]
+    }
+]
